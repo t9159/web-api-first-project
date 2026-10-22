@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script defer src="Login.js"></script>
+    <style>
+        .upDetails{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="icon">
+        ✅
+    </div>
+    <p id="welcomeText"></p>
+    <div class="upDetails">
+        <lable for="updateEmail"> מייל</lable>
+        <input type="email" id="updateEmail" />
+
+        <lable for="updatePassword">סיסמא</lable>
+        <input type="text" id="updatePassword" />
+
+        <lable for="updateFirstName">שם פרטי</lable>
+        <input type="text" id="updateFirstName" />
+
+        <lable for="updateLastName">שם משפחה</lable>
+        <input type="text" id="updateLastName" />
+
+        <button onclick="updateDetails()">
+            update
+        </button>
+    </div>
+    <a onclick="displayDetails()">To update details</a>
+</body>
+</html>
