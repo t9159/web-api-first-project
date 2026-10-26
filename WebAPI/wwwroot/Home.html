@@ -19,21 +19,24 @@
 </head>
 <body>
     <div class="new">
-        <lable for ="email"> מייל</lable>
+        <lable for="email"> מייל</lable>
         <input required type="email" id="email" />
 
-        <lable for ="password">סיסמא</lable>
-        <input required type ="password" id="password" />
+        <lable for="password">סיסמא</lable>
+        <input required type="password" id="password" />
 
-        <lable for ="firstName">שם פרטי</lable>
+        <lable for="firstName">שם פרטי</lable>
         <input required type="text" id="firstName" />
 
-        <lable for ="lastName">שם משפחה</lable>
+        <lable for="lastName">שם משפחה</lable>
         <input required type="text" id="lastName" />
-
+        <br />
+        <button onclick="StrongPass()">בדיקת חוזק סיסמא</button>
+        <progress id="sPass" value="0" max="4"></progress><br><br>
         <button onclick="SignIn()">
             רישום
         </button>
+
     </div>
     <div class="old">
         <lable for="logemail"> מייל</lable>

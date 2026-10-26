@@ -1,6 +1,4 @@
 ﻿
-
-
 const SignIn = async () => {
     try {
         const user = {
@@ -29,7 +27,30 @@ const SignIn = async () => {
     }
         
 }
+const StrongPass = async () => {
+    try {
+        const password=document.querySelector("#password").value
+        const post = await fetch('api/strongPassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(password)
 
+        });
+        const dataPost = await post.json();
+        if (post.ok) {
+            const sPass = document.querySelector("#sPass")
+            sPass.value = dataPost.score
+        }
+        else {
+            throw ("שגיאה")
+        }
+    }
+    catch (e) {
+        alert(e);
+    }
+  }
 
 const LogIn = async () => {
     try {
