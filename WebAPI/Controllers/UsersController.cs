@@ -9,6 +9,8 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        //fix: It is a fixed value
+        readonly string filePath = "DataUsers.txt";
         // GET: api/<UsersController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -18,6 +20,7 @@ namespace WebAPI.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
+        //Why isn't it implemented? Fix it
         public string Get(int id)
         {
             return "value";
@@ -26,8 +29,7 @@ namespace WebAPI.Controllers
         // POST api/<UsersController>
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
-        {
-            string filePath = "DataUsers.txt";
+        { 
             int numberOfUsers = System.IO.File.ReadLines(filePath).Count();
             user.Id = numberOfUsers + 1;
             string userJson = JsonSerializer.Serialize(user);
@@ -38,7 +40,10 @@ namespace WebAPI.Controllers
         [HttpPost("Login")]
         public ActionResult<User> Post([FromBody] LoginUser loginUser)
         {
-            string filePath = "DataUsers.txt";
+            if (!System.IO.File.Exists(filePath))
+            {
+                return BadRequest();
+            }
             using (StreamReader reader = System.IO.File.OpenText(filePath))
             {
                 string? currentUserInFile;
@@ -56,7 +61,10 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] User updateUserDetails)
         {
-            string filePath = "DataUsers.txt";
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
             string textToReplace = string.Empty;
             using (StreamReader reader = System.IO.File.OpenText(filePath))
             {
@@ -65,7 +73,11 @@ namespace WebAPI.Controllers
                 {
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.Id == id)
+                    {
                         textToReplace = currentUserInFile;
+                        //fix: Found- break
+                        break;
+                    }
                 }
             }
             if (textToReplace != string.Empty)
@@ -73,8 +85,11 @@ namespace WebAPI.Controllers
                 string text = System.IO.File.ReadAllText(filePath);
                 text = text.Replace(textToReplace, JsonSerializer.Serialize(updateUserDetails));
                 System.IO.File.WriteAllText(filePath, text);
+                //fix: instead of return Ok()
+                return NoContent()
             }
-            return Ok();
+            //fix: in a case of user not found
+            return NotFound();
         }
 
         // DELETE api/<UsersController>/5
