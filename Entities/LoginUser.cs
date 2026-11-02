@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebAPI
+namespace Entities
 {
     public class LoginUser
     {

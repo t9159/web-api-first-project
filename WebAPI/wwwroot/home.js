@@ -17,7 +17,10 @@ const SignIn = async () => {
         });
         const dataPost = await post.json();
         if (post.ok)
-            alert(`שלום, נרשמת בהצלחה הנך משתמש מספר ${dataPost.id}`);
+        {
+            console.log(dataPost.firstName)
+            alert(`שלום ${dataPost.firstName}, נרשמת בהצלחה הנך משתמש מספר ${dataPost.id}`);
+        }
         else {
             throw ("ההרשמה לא הצליחה, נסה שוב");
         }
