@@ -3,21 +3,25 @@ using Repositories;
 
 namespace Services
 {
-    public class UsersService
+    public class UsersService:IUserService
     {
-        UserRepository userRepository= new UserRepository();
+        IUserRepository _userRepository;
+        public UsersService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         public User AddUser(User user)
         {
-            return userRepository.AddUser(user);
+            return _userRepository.AddUser(user);
         }
 
         public User GetUser(LoginUser loginUser)
         {
-            return userRepository.GetUser(loginUser);
+            return _userRepository.GetUser(loginUser);
         }
         public void UpdateUser(int id, User updateUserDetails)
         {
-            userRepository.UpdateUser(id, updateUserDetails);
+            _userRepository.UpdateUser(id, updateUserDetails);
         }
     }
 }

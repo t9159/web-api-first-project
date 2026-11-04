@@ -10,7 +10,11 @@ namespace WebAPI.Controllers
     [ApiController]
     public class StrongPasswordController : ControllerBase
     {
-        StrongPasswordService strongPasswordService = new StrongPasswordService();
+        IStrongPasswordService _strongPasswordService;
+        public StrongPasswordController(IStrongPasswordService strongPasswordService)
+        {
+            _strongPasswordService = strongPasswordService;
+        }
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -29,7 +33,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public ActionResult<Result> Post([FromBody] string password)
         {
-            return Ok(strongPasswordService.GetStrongPassword(password));
+            return Ok(_strongPasswordService.GetStrongPassword(password));
         }
 
         // PUT api/<ValuesController>/5
