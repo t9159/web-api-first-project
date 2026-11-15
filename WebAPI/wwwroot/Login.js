@@ -1,4 +1,5 @@
-﻿welcomeText = document.querySelector("#welcomeText")
+﻿//welcomeText is assigned but never declared: where is it defined?
+welcomeText = document.querySelector("#welcomeText")
 const currUser =  JSON.parse(sessionStorage.getItem("CurrentUser"))
 welcomeText.textContent = `Hi ${currUser.firstName}, You have successfully logged in`
 

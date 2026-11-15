@@ -1,4 +1,5 @@
 ﻿
+//In JavaScript, function names are written in camelCase, for example strongPass, signIn and logIn
 const StrongPass = async () => {
     try {
         const password = document.querySelector("#password").value
@@ -36,6 +37,7 @@ const SignIn = async () => {
             firstName: document.querySelector("#firstName").value,
             lastName: document.querySelector("#lastName").value
         }
+        //StrongPass returns the score number, so strong.score is undefined: what value does the check need?
         const strong = await StrongPass();
         if (strong.score < 3)
             throw("סיסמא חלשה!")

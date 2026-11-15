@@ -28,6 +28,7 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            //The assignment asks GET by id to read the user with this id from the file and return it (or NotFound / NoContent): how would you find the right line?
             return "value";
         }
 
@@ -49,6 +50,7 @@ namespace WebAPI.Controllers
         {
             var user = _usersService.GetUser(loginUser);
             if(user == null) 
+                //The assignment asks a wrong login to return 204 NoContent: what would you change NotFound() to?
                 return NotFound();
             return Ok(user);
         }
