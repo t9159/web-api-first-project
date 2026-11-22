@@ -1,4 +1,5 @@
 ﻿
+//In JavaScript, function names are written in camelCase: strongPass, signIn, logIn
 const StrongPass = async () => {
     try {
         const password = document.querySelector("#password").value
@@ -37,6 +38,7 @@ const SignIn = async () => {
             lastName: document.querySelector("#lastName").value
         }
         const strong = await StrongPass();
+        //StrongPass returns the score as a number, so what does strong.score give you here?
         if (strong.score < 3)
             throw("סיסמא חלשה!")
         const post = await fetch('api/users', {

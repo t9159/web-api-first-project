@@ -3,6 +3,7 @@ using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 namespace Repositories
 {
+    //The file is named UserRepository.cs but the class is TxtUserRepository: name the file after the class
     public class TxtUserRepository:IUserRepository
     {
         StoreDBContext _context;

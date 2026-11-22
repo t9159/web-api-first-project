@@ -1,4 +1,5 @@
-﻿welcomeText = document.querySelector("#welcomeText")
+﻿//welcomeText is used but never declared: where should it be declared?
+welcomeText = document.querySelector("#welcomeText")
 const currUser =  JSON.parse(sessionStorage.getItem("CurrentUser"))
 welcomeText.textContent = `Hi ${currUser.firstName}, You have successfully logged in`
 
