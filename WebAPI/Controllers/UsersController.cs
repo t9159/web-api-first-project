@@ -45,11 +45,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Login")]
-        public ActionResult<User> Post([FromBody] LoginUser loginUser)
+        public async Task<ActionResult<User>> Post([FromBody] LoginUser loginUser)
         {
-            var user = _usersService.GetUser(loginUser);
+            var user = await _usersService.GetUser(loginUser);
             if(user == null) 
-                return NotFound();
+                return NoContent();
             return Ok(user);
         }
 

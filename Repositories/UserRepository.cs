@@ -18,15 +18,15 @@ namespace Repositories
             return user;
         }
 
-        public User GetUser(LoginUser loginUser)
+        public Task<User> GetUser(LoginUser loginUser)
         {
-            User user=_context.Users.ToList().Find(user => user.Email == loginUser.Email && user.Password== loginUser.Password);
+            Task<User> user = _context.Users.FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Password == loginUser.Password);
             return user;
         }
         public async Task UpdateUser(int id, User updateUserDetails)
         {
-            _context.Users.Remove(_context.Users.ToList().Find(u => u.Id == id));
-            _context.Users.Add(updateUserDetails);
+            updateUserDetails.Id = id;
+            _context.Users.Update(updateUserDetails);
             await _context.SaveChangesAsync();
         }
     }

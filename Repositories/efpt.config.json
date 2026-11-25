@@ -23,11 +23,15 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Products]",
+         "Name": "[dbo].[Order_Items]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Users]",
+         "Name": "[dbo].[Orders]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Products]",
          "ObjectType": 0
       }
    ],

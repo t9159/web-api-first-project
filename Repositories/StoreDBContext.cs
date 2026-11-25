@@ -22,6 +22,14 @@ public partial class StoreDBContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderItem> OrderItems { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=(LOCALDB)\\MSSQLLocalDB;Initial Catalog=StoreDB;Integrated Security=True");
@@ -44,7 +52,62 @@ public partial class StoreDBContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50);
         });
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.Property(e => e.CategoryName)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("Category_name");
+        });
 
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.TotalSum)
+                .HasColumnType("money")
+                .HasColumnName("Total_Sum");
+            entity.Property(e => e.UserId).HasColumnName("User_Id");
+        });
+
+        modelBuilder.Entity<OrderItem>(entity =>
+        {
+            entity.ToTable("Order_Items");
+
+            entity.Property(e => e.OrderId).HasColumnName("Order_Id");
+            entity.Property(e => e.ProductId).HasColumnName("Product_Id");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Order_Items_Orders");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.OrderItems)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Order_Items_Products");
+        });
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
+            entity.Property(e => e.Description)
+                .IsRequired()
+                .HasMaxLength(500);
+            entity.Property(e => e.ImageName)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("Image_name");
+            entity.Property(e => e.Price).HasColumnType("money");
+            entity.Property(e => e.ProductName)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("Product_Name");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.Products)
+                .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Products_Categories");
+        });
         OnModelCreatingPartial(modelBuilder);
     }
 

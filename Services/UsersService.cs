@@ -15,9 +15,9 @@ namespace Services
             return await _userRepository.AddUser(user);
         }
 
-        public User GetUser(LoginUser loginUser)
+        public async Task<User> GetUser(LoginUser loginUser)
         {
-            return _userRepository.GetUser(loginUser);
+            return await _userRepository.GetUser(loginUser);
         }
         public async Task UpdateUser(int id, User updateUserDetails)
         {

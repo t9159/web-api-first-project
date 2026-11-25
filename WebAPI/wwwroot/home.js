@@ -1,5 +1,5 @@
 ﻿
-const StrongPass = async () => {
+const strongPass = async () => {
     try {
         const password = document.querySelector("#password").value
         const post = await fetch('api/strongPassword', {
@@ -27,7 +27,7 @@ const StrongPass = async () => {
 
 
 
-const SignIn = async () => {
+const signIn = async () => {
     try {
         const user = {
             id: 0,
@@ -36,8 +36,8 @@ const SignIn = async () => {
             firstName: document.querySelector("#firstName").value,
             lastName: document.querySelector("#lastName").value
         }
-        const strong = await StrongPass();
-        if (strong.score < 3)
+        const strong = await strongPass();
+        if (strong < 3)
             throw("סיסמא חלשה!")
         const post = await fetch('api/users', {
             method: 'POST',
@@ -65,7 +65,7 @@ const SignIn = async () => {
 }
 
 
-const LogIn = async () => {
+const logIn = async () => {
     try {
         const user = {
             email: document.querySelector("#logemail").value,
