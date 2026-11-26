@@ -11,9 +11,11 @@ namespace WebAPI.Controllers
     public class OrdersController : ControllerBase
     {
         IOrderService _orderService;
-        public OrdersController(IOrderService orderService)
+        ILogger<OrdersController> _logger;
+        public OrdersController(IOrderService orderService, ILogger<OrdersController> logger)
         {
             _orderService = orderService;
+            _logger = logger;
         }
         // GET: api/<OrdersController>
         [HttpGet]
@@ -36,6 +38,7 @@ namespace WebAPI.Controllers
             Order newOrder = await _orderService.AddOrder(order);
             if (newOrder == null)
                 return BadRequest();
+            _logger.LogInformation($"Added order number: {order.Id}, by user number: {order.UserId} ");
             return CreatedAtAction(nameof(Get), new { id = newOrder.Id }, newOrder);
 
         }

@@ -14,9 +14,16 @@ namespace Repositories
         {
             _storeDBContext = storeDBContext;
         }
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<IEnumerable<Product>> GetProducts(int position, int skip, string? name, string? desc,
+            int? minPrice, int? maxPrice, int?[] categoriesId)
         {
-            IEnumerable<Product> products= await _storeDBContext.Products.ToListAsync();
+            var query = _storeDBContext.Products.Where(product => (desc == null ? (true) : (product.Description.Contains(desc)))
+            && ((name == null) ? (true) : (product.ProductName.Contains(name)))
+            && ((minPrice == null) ? (true) : (product.Price >= minPrice))
+            && ((maxPrice == null) ? (true) : (product.Price <= maxPrice))
+            && (categoriesId.Length == 0) ? (true) : (categoriesId.Contains(product.CategoryId))).OrderBy(product => product.Price);
+            IEnumerable<Product> products = await query.ToListAsync();
+            var total = await query.CountAsync();
             return products;
         }
         public Task<Product> GetProduct(int id)

@@ -10,8 +10,8 @@ const strongPass = async () => {
             body: JSON.stringify(password)
 
         });
-        const dataPost = await post.json();
         if (post.ok) {
+            const dataPost = await post.json();
             const sPass = document.querySelector("#sPass")
             sPass.value = dataPost.score
             return dataPost.score
@@ -46,9 +46,9 @@ const signIn = async () => {
             },
             body: JSON.stringify(user)
         });
-        const dataPost = await post.json();
-        if (post.ok)
+        if (post.ok&&post.status==201)
         {
+            const dataPost = await post.json();
             console.log(dataPost.firstName)
             alert(`שלום ${dataPost.firstName}, נרשמת בהצלחה הנך משתמש מספר ${dataPost.id}`);
         }
@@ -79,8 +79,8 @@ const logIn = async () => {
             body: JSON.stringify(user)
 
         });
-        const dataPost = await post.json();
-        if (post.ok) {
+        if (post.ok && post.status == 200) {
+            const dataPost = await post.json();
             sessionStorage.setItem('CurrentUser', JSON.stringify(dataPost))
             window.location.href = "Login.html"
         }

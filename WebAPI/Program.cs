@@ -2,13 +2,14 @@ using Repositories;
 using Services;
 using Entities;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
-
+builder.Host.UseNLog();
 builder.Services.AddControllers();
-builder.Services.AddTransient<IUserRepository, TxtUserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UsersService>();
 builder.Services.AddTransient<IStrongPasswordService, StrongPasswordService>();
 builder.Services.AddTransient<IProductsService, ProductsService>();
@@ -19,8 +20,9 @@ builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddOpenApi();
 
-builder.Services.AddDbContext<StoreDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Data Source=(LOCALDB)\\MSSQLLocalDB;Initial Catalog=StoreDB;Integrated Security=True")), ServiceLifetime.Transient);
+builder.Services.AddDbContext<StoreDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Home")), ServiceLifetime.Transient);
 var app = builder.Build();
+
 
 app.UseStaticFiles();
 // Configure the HTTP request pipeline.

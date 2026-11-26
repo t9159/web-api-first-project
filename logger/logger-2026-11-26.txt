@@ -1,0 +1,40 @@
+2026-11-26 17:04:18.7407|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:06:07.6586|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:06:14.4545|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:08:04.2321|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:10:13.6341|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:13:58.5544|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:15:35.8113|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:17:16.3350|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:18:08.1466|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:18:16.0690|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:18:24.0127|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:18:37.3854|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:20:37.7534|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:21:29.2319|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:27:32.3045|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:28:21.8719|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:30:54.0522|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:32:29.6951|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:41:34.2117|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:43:54.4238|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:45:26.3697|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 17:46:48.1379|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:46:48.2085|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 17:46:48.3848|WARN|Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware|Unable to configure Browser Link script injection on the response. 
+2026-11-26 17:46:48.3848|WARN|Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware|Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2026-11-26 17:57:21.7461|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: k025710536@gmail.com, name: א א 
+2026-11-26 18:00:02.5027|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 18:11:09.2215|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 18:11:23.2379|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 18:12:18.5492|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: k025710536@gmail.com, name: א קרשינסקי 
+2026-11-26 18:12:58.3177|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: k025710536@gmail.com 
+2026-11-26 18:13:07.0492|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 2: email: k025710536@gmail.com, name: חוי קרשינסקי 
+2026-11-26 18:13:42.9142|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 2: email: k025710536@gmail.com, name: חוי קרשינסקי 
+2026-11-26 18:14:17.1863|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 18:26:30.5315|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: a@b.c, name: a b 
+2026-11-26 18:27:34.5807|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: a@b.c 
+2026-11-26 18:41:44.5716|INFO|WebAPI.Controllers.UsersController|Login attempted with user name: 536tamar@gmail.com 
+2026-11-26 18:41:56.8150|INFO|WebAPI.Controllers.UsersController|Added attempted to user number 1: email: 536tamar@gmail.com, name: תמר קרשינסקי 
+2026-11-26 18:43:25.7411|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: ruti7191231@gmail.com, name: רותי גמליאל 
+2026-11-26 18:47:32.1040|INFO|WebAPI.Controllers.UsersController|Added attempted with user name: ruti7191231@gmail.com, name: רותי גמליאל 

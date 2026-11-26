@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Services;
 using Entities;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,10 +11,15 @@ namespace WebAPI.Controllers
     {
         IUserService _usersService;
         IStrongPasswordService _strongPasswordService;
-        public UsersController(IUserService usersService, IStrongPasswordService strongPasswordService)
+        ILogger<UsersController> _logger;
+
+        IConfiguration _configuration;
+        public UsersController(IUserService usersService, IStrongPasswordService strongPasswordService, IConfiguration configuration, ILogger<UsersController> logger)
         {
-            _usersService=usersService;
+            _usersService = usersService;
             _strongPasswordService = strongPasswordService;
+            _configuration = configuration;
+            _logger = logger;
         }
         // GET: api/<UsersController>
         [HttpGet]
@@ -35,9 +39,11 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> Post([FromBody] User user)
         {
-            if (_strongPasswordService.GetStrongPassword(user.Password).Score > 2)
+            int score = int.Parse(_configuration["StrongPasswordScore:Developer"]);
+            if (_strongPasswordService.GetStrongPassword(user.Password).Score > (score!=null?score:4))
             {
                 user = await _usersService.AddUser(user);
+                _logger.LogInformation($"Added attempted with user name: {user.Email}, name: {user.FirstName} {user.LastName} ");
                 return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
             }
             else
@@ -48,8 +54,9 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<User>> Post([FromBody] LoginUser loginUser)
         {
             var user = await _usersService.GetUser(loginUser);
-            if(user == null) 
+            if (user == null)
                 return NoContent();
+            _logger.LogInformation($"Login attempted with user name: {loginUser.Email} ");
             return Ok(user);
         }
 
@@ -60,6 +67,7 @@ namespace WebAPI.Controllers
             if (_strongPasswordService.GetStrongPassword(updateUserDetails.Password).Score > 2)
             {
                 await _usersService.UpdateUser(id, updateUserDetails);
+                _logger.LogInformation($"Added attempted to user number {id}: email: {updateUserDetails.Email}, name: {updateUserDetails.FirstName} {updateUserDetails.LastName} ");
                 return Ok();
             }
             return BadRequest();

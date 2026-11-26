@@ -3,10 +3,10 @@ using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 namespace Repositories
 {
-    public class TxtUserRepository:IUserRepository
+    public class UserRepository:IUserRepository
     {
         StoreDBContext _context;
-        public TxtUserRepository(StoreDBContext context)
+        public UserRepository(StoreDBContext context)
         {
             _context = context;
         }

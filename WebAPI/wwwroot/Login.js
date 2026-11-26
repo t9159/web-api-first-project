@@ -11,8 +11,8 @@ const strongPass = async (password) => {
             body: JSON.stringify(password)
 
         });
-        const dataPost = await post.json();
         if (post.ok) {
+            const dataPost = await post.json();
             return dataPost.score
         }
         else {
@@ -68,6 +68,6 @@ const updateDetails = async () => {
         }
     }
     catch (e) {
-        alert(e.message);
+        alert(e);
     }
 }
